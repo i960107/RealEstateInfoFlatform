@@ -1,0 +1,300 @@
+WebContent-MainSigninLogin-Main.jsp에서 시작
+
+
+
+
+
+drop table members purge;
+create table members (
+no number primary key,
+id varchar2(20) not null,
+password varchar2(20) not null,
+name varchar2(20) not null,
+email varchar2(20) not null,	
+phone1 varchar2(3) not null,
+phone2 varchar2(4) not null,
+phone3 varchar2(4) not null,
+address varchar2(20) not null
+);
+
+drop sequence member_Seq;
+create sequence member_seq
+start with 0
+increment by 1
+minvalue 0
+maxvalue 100
+nocache;
+
+
+drop table agency purge;
+create table agency(
+no number primary key,
+id varchar2(20) not null,
+password varchar2(20) not null,
+agency_name varchar2(20) not null,
+agent_name varchar2(20) not null,
+phone1 varchar2(3) not null,
+phone2 varchar2(4)not null,
+phone3 varchar2(4) not null,
+address varchar2(20),
+certified char(1) default 0);
+
+drop sequence agency_seq;
+create sequence agency_seq
+start with 0
+increment by 1
+minvalue 0
+nocache;
+insert into agency values(agency_seq.nextval,'ehwa12','1234','이대공인중개사','흥부','010','1234','1234','서울 서대문구 연희동',1);
+//아파트 필드 16개
+drop table apartment purge;
+create table apartment(
+no number primary key,
+name varchar2(20) not null,
+type varchar2(20) not null,
+price varchar2(20) not null,
+moveinDate date,
+image varchar2(100),
+unit number,
+building number,
+area number,
+developer varchar2(20),
+constructor varchar2(20),
+parking number,
+heatingsystem varchar2(20),
+facilities varchar2(40),
+address varchar2(50),
+agency varchar2(20)
+);
+
+drop sequence apartment_seq;
+create sequence apartment_seq
+start with 0
+increment by 1
+minvalue 0
+nocache;
+insert into apartment values(apartment_seq.nextval,'연희 대우아파트1','전월세','4억 5천','1999-01-01','house1.jpg house2.jpg',400,10,80,'삼성물산','대웅건설',1.4,'지역난방','없음','서울 서대문구 연희동','ehwa12');
+insert into apartment values(apartment_seq.nextval,'연희 대우아파트2','전월세','4억 5천','1999-01-01','house3.jpg house2.jpg',400,10,80,'삼성물산','대웅건설',1.4,'지역난방','없음','서울 마포구 연남동','ehwa12');
+insert into apartment values(apartment_seq.nextval,'연희 대우아파트3','전월세','4억 5천','1999-01-01','house4.jpg house2.jpg',400,10,80,'삼성물산','대웅건설',1.4,'지역난방','없음','서울 서대문구 연희동','ehwa12');
+insert into apartment values(apartment_seq.nextval,'연희 대우아파트4','전월세','4억 5천','1999-01-01','house2.jpg house2.jpg',400,10,80,'삼성물산','대웅건설',1.4,'지역난방','없음','서울 서대문구 연희동','ehwa12');
+insert into apartment values(apartment_seq.nextval,'연희 대우아파트5','전월세','4억 5천','1999-01-01','house1.jpg house2.jpg',400,10,80,'삼성물산','대웅건설',1.4,'지역난방','없음','서울 서대문구 연희동','ehwa12');
+
+insert into apartment values(apartment_seq.nextval,'연희 대우아파트1','매매','4억 5천','1999-01-01','house2.jpg house2.jpg',400,10,80,'삼성물산','대웅건설',1.4,'지역난방','없음','서울 서대문구 연희동','ehwa12');
+insert into apartment values(apartment_seq.nextval,'연희 대우아파트2','매매','4억 5천','1999-01-01','house3.jpg house2.jpg',400,10,80,'삼성물산','대웅건설',1.4,'지역난방','없음','서울 서대문구 연희동','ehwa12');
+insert into apartment values(apartment_seq.nextval,'연희 대우아파트3','매매','4억 5천','1999-01-01','house4.jpg house2.jpg',400,10,80,'삼성물산','대웅건설',1.4,'지역난방','없음','서울 마포구 연남동','ehwa12');
+insert into apartment values(apartment_seq.nextval,'연희 대우아파트4','매매','4억 5천','1999-01-01','house1.jpg house2.jpg',400,10,80,'삼성물산','대웅건설',1.4,'지역난방','없음','서울 서대문구 연희동','ehwa12');
+
+insert into apartment values(apartment_seq.nextval,'연희 대우아파트1','신축분양','4억 5천','1999-01-01','house1.jpg house2.jpg',400,10,80,'삼성물산','대웅건설',1.4,'지역난방','없음','서울 서대문구 연희동','ehwa12');
+insert into apartment values(apartment_seq.nextval,'연희 대우아파트2','신축분양','4억 5천','1999-01-01','house2.jpg house2.jpg',400,10,80,'삼성물산','대웅건설',1.4,'지역난방','없음','마포구 연남동','ehwa12');
+insert into apartment values(apartment_seq.nextval,'연희 대우아파트3','신축분양','4억 5천','1999-01-01','house3.jpg house2.jpg',400,10,80,'삼성물산','대웅건설',1.4,'지역난방','없음','서울 서대문구 연희동','ehwa12');
+insert into apartment values(apartment_seq.nextval,'연희 대우아파트4','신축분양','4억 5천','1999-01-01','house2.jpg house2.jpg',400,10,80,'삼성물산','대웅건설',1.4,'지역난방','없음','마포구 연남동','ehwa12');
+insert into apartment values(apartment_seq.nextval,'연희 대우아파트5','신축분양','4억 5천','1999-01-01','house5.jpg house2.jpg',400,10,80,'삼성물산','대웅건설',1.4,'지역난방','없음','서울 서대문구 연희동','ehwa12');
+
+
+drop sequence house_seq;
+create sequence house_seq
+start with 0
+increment by 1
+minvalue 0
+nocache;
+//17개
+drop table house purge;
+create table house(
+no number primary key,
+type varchar2(20) not null,
+price varchar2(20) not null,
+fee varchar2(20) ,
+constructiondate date,
+moveinDate date,
+image varchar2(100),
+area number,
+floor number,
+totalfloor number,
+WebContent-MainSigninLogin-Main.jsp에서 시작
+
+
+
+
+
+drop table members purge;
+create table members (
+no number primary key,
+id varchar2(20) not null,
+password varchar2(20) not null,
+name varchar2(20) not null,
+email varchar2(20) not null,
+phone1 varchar2(3) not null,
+phone2 varchar2(4) not null,
+phone3 varchar2(4) not null,
+address varchar2(20) not null
+);
+
+drop sequence member_Seq;
+create sequence member_seq
+start with 0
+increment by 1
+minvalue 0
+maxvalue 100
+nocache;
+
+
+drop table agency purge;
+create table agency(
+no number primary key,
+id varchar2(20) not null,
+password varchar2(20) not null,
+agency_name varchar2(20) not null,
+agent_name varchar2(20) not null,
+phone1 varchar2(3) not null,
+phone2 varchar2(4)not null,
+phone3 varchar2(4) not null,
+address varchar2(20),
+certified char(1) default 0);
+
+drop sequence agency_seq;
+create sequence agency_seq
+start with 0
+increment by 1
+minvalue 0
+nocache;
+insert into agency values(agency_seq.nextval,'ehwa12','1234','이대공인중개사','흥부','010','1234','1234','서울 서대문구 연희동',1);
+//아파트 필드 16개
+drop table apartment purge;
+create table apartment(
+no number primary key,
+name varchar2(20) not null,
+type varchar2(20) not null,
+price varchar2(20) not null,
+moveinDate date,
+image varchar2(100),
+unit number,
+building number,
+area number,
+developer varchar2(20),
+constructor varchar2(20),
+parking number,
+heatingsystem varchar2(20),
+facilities varchar2(40),
+address varchar2(50),
+agency varchar2(20)
+);
+
+drop sequence apartment_seq;
+create sequence apartment_seq
+start with 0
+increment by 1
+minvalue 0
+nocache;
+insert into apartment values(apartment_seq.nextval,'연희 대우아파트1','전월세','4억 5천','1999-01-01','house1.jpg house2.jpg',400,10,80,'삼성물산','대웅건설',1.4,'지역난방','없음','서울 서대문구 연희동','ehwa12');
+insert into apartment values(apartment_seq.nextval,'연희 대우아파트2','전월세','4억 5천','1999-01-01','house3.jpg house2.jpg',400,10,80,'삼성물산','대웅건설',1.4,'지역난방','없음','서울 마포구 연남동','ehwa12');
+insert into apartment values(apartment_seq.nextval,'연희 대우아파트3','전월세','4억 5천','1999-01-01','house4.jpg house2.jpg',400,10,80,'삼성물산','대웅건설',1.4,'지역난방','없음','서울 서대문구 연희동','ehwa12');
+insert into apartment values(apartment_seq.nextval,'연희 대우아파트4','전월세','4억 5천','1999-01-01','house2.jpg house2.jpg',400,10,80,'삼성물산','대웅건설',1.4,'지역난방','없음','서울 서대문구 연희동','ehwa12');
+insert into apartment values(apartment_seq.nextval,'연희 대우아파트5','전월세','4억 5천','1999-01-01','house1.jpg house2.jpg',400,10,80,'삼성물산','대웅건설',1.4,'지역난방','없음','서울 서대문구 연희동','ehwa12');
+
+insert into apartment values(apartment_seq.nextval,'연희 대우아파트1','매매','4억 5천','1999-01-01','house2.jpg house2.jpg',400,10,80,'삼성물산','대웅건설',1.4,'지역난방','없음','서울 서대문구 연희동','ehwa12');
+insert into apartment values(apartment_seq.nextval,'연희 대우아파트2','매매','4억 5천','1999-01-01','house3.jpg house2.jpg',400,10,80,'삼성물산','대웅건설',1.4,'지역난방','없음','서울 서대문구 연희동','ehwa12');
+insert into apartment values(apartment_seq.nextval,'연희 대우아파트3','매매','4억 5천','1999-01-01','house4.jpg house2.jpg',400,10,80,'삼성물산','대웅건설',1.4,'지역난방','없음','서울 마포구 연남동','ehwa12');
+insert into apartment values(apartment_seq.nextval,'연희 대우아파트4','매매','4억 5천','1999-01-01','house1.jpg house2.jpg',400,10,80,'삼성물산','대웅건설',1.4,'지역난방','없음','서울 서대문구 연희동','ehwa12');
+
+insert into apartment values(apartment_seq.nextval,'연희 대우아파트1','신축분양','4억 5천','1999-01-01','house1.jpg house2.jpg',400,10,80,'삼성물산','대웅건설',1.4,'지역난방','없음','서울 서대문구 연희동','ehwa12');
+insert into apartment values(apartment_seq.nextval,'연희 대우아파트2','신축분양','4억 5천','1999-01-01','house2.jpg house2.jpg',400,10,80,'삼성물산','대웅건설',1.4,'지역난방','없음','마포구 연남동','ehwa12');
+insert into apartment values(apartment_seq.nextval,'연희 대우아파트3','신축분양','4억 5천','1999-01-01','house3.jpg house2.jpg',400,10,80,'삼성물산','대웅건설',1.4,'지역난방','없음','서울 서대문구 연희동','ehwa12');
+insert into apartment values(apartment_seq.nextval,'연희 대우아파트4','신축분양','4억 5천','1999-01-01','house2.jpg house2.jpg',400,10,80,'삼성물산','대웅건설',1.4,'지역난방','없음','마포구 연남동','ehwa12');
+insert into apartment values(apartment_seq.nextval,'연희 대우아파트5','신축분양','4억 5천','1999-01-01','house5.jpg house2.jpg',400,10,80,'삼성물산','대웅건설',1.4,'지역난방','없음','서울 서대문구 연희동','ehwa12');
+
+
+drop sequence house_seq;
+create sequence house_seq
+start with 0
+increment by 1
+minvalue 0
+nocache;
+//17개
+drop table house purge;
+create table house(
+no number primary key,
+type varchar2(20) not null,
+price varchar2(20) not null,
+fee varchar2(20) ,
+constructiondate date,
+moveinDate date,
+image varchar2(100),
+area number,
+floor number,
+totalfloor number,
+layout varchar2(20),
+parking number,
+elevator char(1) default 0,
+address varchar2(20),
+content varchar2(100),
+agency varchar2(20),
+recommended char(1) default 1 
+);
+
+insert into house values(house_seq.nextval,'전월세','2000/60','5','2020/12/28','1900/01/01','house4.jpg house2.jpg',55,1,4,'투룸 주방겸 거실',0,0,'서대문구 연희동','가성비 좋은 투룸!! 구옥이지만 살기 좋습니다','ehwa12',1);
+insert into house values(house_seq.nextval,'신축분양','2000/60','5','2020/12/28','1900/01/01','house2.jpg house2.jpg',55,1,4,'투룸 주방겸 거실',0,0,'마포구 연남동','가성비 좋은 투룸!! 구옥이지만 살기 좋습니다','ehwa12',0);
+insert into house values(house_seq.nextval,'전월세','2000/60','5','2020/12/28','1900/01/01','house1.jpg house2.jpg',55,1,4,'투룸 주방겸 거실',0,0,'서대문구 연희동','가성비 좋은 투룸!! 구옥이지만 살기 좋습니다','ehwa12',0);
+insert into house values(house_seq.nextval,'매매','2000/60','5','2020/12/28','1900/01/01','house3.jpg house2.jpg',55,1,4,'투룸 주방겸 거실',0,0,'마포구 연남동','가성비 좋은 투룸!! 구옥이지만 살기 좋습니다','ehwa12',1);
+insert into house values(house_seq.nextval,'전월세','2000/60','5','2020/12/28','1900/01/01','house2.jpg house2.jpg',55,1,4,'투룸 주방겸 거실',0,0,'서대문구 연희동','가성비 좋은 투룸!! 구옥이지만 살기 좋습니다','ehwa12',0);
+drop sequence studio_seq;
+create sequence studio_seq
+start with 0
+increment by 1
+minvalue 0
+nocache;
+drop table studio purge;
+//원룸 필드 18개
+create table studio(
+no number primary key,
+type varchar2(20) not null,
+price varchar2(20) not null,
+fee varchar2(20) ,
+constructiondate date,
+moveinDate date,
+image varchar2(100),
+area number,
+floor number,
+totalfloor number,
+layout varchar2(20),
+options varchar2(50),
+parking number,
+elevator char(1) default 0,
+address varchar2(20),
+content varchar2(100),
+agency varchar2(20),
+recommended char(1) default 1 
+);
+insert into studio values(studio_seq.nextval,'전월세','2000/60','5','1999/12/28','2020/12/24','house1.jpg house2.jpg',30,1,4,'분리형원룸','airconditioner/gasstove/refrigerator',0,0,'서대문구 연희동','연대 근처 원룸입니다','ehwa12',0);
+insert into studio values(studio_seq.nextval,'전월세','2000/60','5','1999/12/28','2020/12/24','house3.jpg house2.jpg',30,1,4,'분리형원룸','airconditioner/gasstove/refrigerator'서대문구 연희동','연대 근처 원룸입니다','ehwa12',0);
+insert into studio values(studio_seq.nextval,'신축분양','2000/60','5','1999/12/28','2020/12/24','house4.jpg house2.jpg',30,1,4,'분리형원룸','airconditioner/gasstove/refrigerator'마포구 연남동','연대 근처 원룸입니다','ehwa12',0);
+insert into studio values(studio_seq.nextval,'매매','2000/60','5','1999/12/28','2020/12/24','house5.jpg house2.jpg',30,1,4,'분리형원룸','airconditioner/gasstove/refrigerator',0,0,'서대문구 연희동','연대 근처 원룸입니다','ehwa12',1);
+insert into studio values(studio_seq.nextval,'전월세','2000/60','5','1999/12/28','2020/12/24','house2.jpg house2.jpg',30,1,4,'분리형원룸','airconditioner/gasstove/refrigerator',0,0,'서대문구 연희동','연대 근처 원룸입니다','ehwa12',1);
+insert into studio values(studio_seq.nextval,'전월세','2000/60','5','1999/12/28','2020/12/24','house1.jpg house2.jpg',30,1,4,'분리형원룸','airconditioner/gasstove/refrigerator',0,0,'서대문구 연희동','연대 근처 원룸입니다','ehwa12',0);
+
+drop table dibs purge;
+create table dibs(
+id varchar2(20),
+kind varchar2(10),
+no number
+);	
+
+drop table board purge;
+create table board(
+no number, 
+member_id varchar2(20) not null,
+agency_id varchar2(20) not null,
+kind varchar2(20) not null,
+rs_no number not null,
+content varchar2(100) not null,
+regdate date not null,
+ref number,
+re_step number default 0
+);
+
+drop sequence board_seq;
+create sequence board_seq
+start with 0
+increment by 1
+minvalue 0
+maxvalue 100
+nocache;

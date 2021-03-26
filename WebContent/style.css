@@ -1,0 +1,76 @@
+@charset "EUC-KR";
+
+body {
+	background: #F0F8FF;
+	text-align: center;
+}
+.contentTd{
+	height:500px;
+	
+}
+table caption{
+	
+}
+table {
+	border: none;
+	margin: auto;
+	border-collapse: collapse;
+	text-align: center;
+}
+.viewTable{
+	text-align:center;
+	background-color: white;
+	width:90%%;
+	vertical-align: top;
+	
+}
+.viewTable img{
+	width:100px;
+	height:100px;
+}
+.viewTable tr:first-child{
+	background-color:#FFA500;
+	font-size:15px;
+}
+.viewTable td{
+	border:1px solid black;
+}
+#toptable {
+	width: 100%
+}
+
+.roundSpan {
+	border: none;
+	border-radius: 40px;
+}
+
+.mainColor {
+	background-color: #FFA500;
+}
+
+
+.menu {
+	background-color: white;
+	height: "120px";
+}
+
+a {
+	text-decoration: none;
+}
+
+a:link {
+	color: black;
+	font-weight: bold;
+}
+
+a:hover {
+	color: #FFA500;
+}
+
+#mainTable {
+	height: 200px;
+	width: 500px;
+}
+a:active {
+color: #FFA500;
+}
